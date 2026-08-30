@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Privacy Policy · Campus Dating Connect</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>
+:root { color-scheme: light; --ink:#1A1614; --soft:#5B534E; --faint:#9A908A; --paper:#FBF7F2; --line:#E7DFD5; --accent:#6C4BF6; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); padding:48px 24px 80px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; line-height:1.6; }
+.wrap { max-width:720px; margin:0 auto; }
+.mark { width:56px; height:56px; border-radius:50%; margin-bottom:28px;
+  background:linear-gradient(160deg,#7C5CFF,#3A21A8); display:grid; place-items:center; }
+.bars { display:flex; gap:3px; align-items:center; }
+.bars i { display:block; width:3px; border-radius:2px; background:#fff; }
+h1 { font-family:ui-serif,Georgia,serif; font-size:34px; line-height:1.15; margin:0 0 6px; font-weight:600; }
+h2 { font-family:ui-serif,Georgia,serif; font-size:22px; margin:38px 0 10px; font-weight:600; }
+.updated { color:var(--faint); font-size:14px; margin:0 0 28px; }
+p, li { color:var(--soft); font-size:16px; }
+ul { padding-left:20px; }
+li { margin-bottom:8px; }
+strong { color:var(--ink); }
+a { color:var(--accent); }
+.callout { background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin:24px 0; }
+.callout p:last-child { margin-bottom:0; }
+footer { margin-top:56px; padding-top:24px; border-top:1px solid var(--line); color:var(--faint); font-size:14px; }
+</style></head>
+<body><div class="wrap">
+<h1>Campus Dating Connect Privacy Policy</h1>
+<p class="updated">Last updated 29 August 2026 · Now Studio LLC</p>
+<div class="callout"><p><strong>The short version.</strong> This is a dating app, so it handles personal profile
+data. Two things are worth knowing before you sign up. First, your conversations and shared photos live in
+<strong>your own iCloud account</strong> and Now Studio cannot read them. Second, to join you must apply to the
+community, and <strong>your application is deliberately visible to other verified members</strong> so they can
+review it — that part is not private, and the rest of this page explains exactly what it contains.</p></div>
+
+<h2>Game Center sign-in is required</h2>
+<p>You cannot reach discovery or matching until you are signed in to Game Center. That is the app's anti-bot
+measure: a Game Center identity is tied to a real, unique Apple Account, so it is far harder to mass-produce
+than an email address.</p>
+<ul>
+<li><strong>What the app reads from Game Center</strong> — your Game Center display name and your team player ID
+(an identifier Apple scopes to this developer). In a live matchmaking session it also sees the other player's
+Game Center alias, and they see yours.</li>
+<li><strong>What it does not read</strong> — your Apple Account email address, your real name, your password, your
+friends list, your achievements, your scores or your game history. The app requests none of those and Apple does
+not hand them over.</li>
+</ul>
+
+<h2>The profile you create</h2>
+<p>Signup asks for a display name, a date of birth, a short bio and a set of interests. The date of birth is used
+to calculate your age and is not itself saved — only the resulting age number is. Your name, age, bio and
+interests are stored on your device and are what other people see.</p>
+
+<h2>Community vetting uses a public CloudKit database — please read this part</h2>
+<p>Joining is not automatic. When you finish signup, the app writes a <strong>PendingApplicant</strong> record into
+the <strong>public</strong> database of the app's CloudKit container. A CloudKit public database is shared by
+everyone using the app. That record contains:</p>
+<ul>
+<li>your display name, your age, your bio and your profile image name;</li>
+<li>your CloudKit user record identifier, an opaque id Apple issues for this app;</li>
+<li>your application status, its approval and flag counts, and the date you applied;</li>
+<li>if you joined with an invite code, the identifier of the member who issued it.</li>
+</ul>
+<p>These fields are stored unencrypted <em>on purpose</em>. The whole point of the feature is that other verified
+members open a review queue, read your name, age and bio, and then approve or flag you. Three approvals from
+distinct members get you in; two flags reject you. So: <strong>anything you type into your name or bio at signup
+should be treated as visible to other members of the app, not as private.</strong> Approval and flag records are
+also written to the same public database and record which member approved or flagged which applicant, by opaque
+CloudKit id. Invite codes are stored there too, along with who issued each one and who redeemed it.</p>
+<p>Because this is a public CloudKit database rather than the private per-user storage the rest of the app uses,
+Now Studio, as the owner of the CloudKit container, <strong>can</strong> see and administer these records through
+Apple's CloudKit Dashboard. We are stating that plainly rather than implying otherwise. The app has no in-app
+button that deletes your applicant record, and the record remains after a decision is made — if you want yours
+removed, email us and we will delete it.</p>
+
+<h2>Chats and shared photos stay in your own iCloud</h2>
+<p>Every match gets its own private CloudKit record zone, shared between exactly the two of you using Apple's
+CKShare. The person who created the match holds the zone in <strong>their</strong> private CloudKit database; the
+other person sees the same zone in <strong>their</strong> shared database. Both sit inside the two participants'
+own iCloud accounts under their own Apple Accounts. The share is invite-only — it has no public permission, so
+nobody can reach the conversation by finding the link.</p>
+<ul>
+<li><strong>Message text</strong> is written into CloudKit's encrypted fields, which Apple encrypts with keys held
+by the share's participants.</li>
+<li><strong>Sent alongside each message</strong>, and not encrypted, are an opaque sender identifier and a
+timestamp, which CloudKit needs to route and order the conversation.</li>
+<li><strong>Photos</strong> you send in a chat are uploaded to that same shared zone as CloudKit assets, and a copy
+is also written into the app's own folder on each participant's device. Photo attachments are stored as assets
+rather than in the encrypted-field set.</li>
+<li><strong>When a match is first created</strong>, a small introduction record carrying your display name, age,
+bio and profile image name is placed in the zone so the other person can see who they matched with. Only that one
+match participant can read it.</li>
+</ul>
+<p><strong>Now Studio is not a participant in any of these shares and has no access to them.</strong> We cannot
+read your messages or your shared photos.</p>
+
+<h2>Your voice intro: the recording is deleted, only the text is kept</h2>
+<p>Signup offers a short spoken intro of roughly fifteen to thirty seconds. Here is exactly what the app does with
+it. The audio is written to a temporary file, handed to Apple's Speech framework for transcription, and the file
+is then deleted the moment transcription finishes — including when transcription fails, and immediately if you
+cancel. Only the resulting text is kept, and it becomes your bio, which you can edit. <strong>The audio recording
+is never uploaded to Now Studio and is never attached to any CloudKit record.</strong></p>
+<p>One honest caveat about the transcription itself: the app asks for on-device recognition wherever the device
+and language support it, so in that case your voice never leaves your phone. Some devices and languages cannot do
+on-device recognition at all, and there the transcription is performed by Apple's speech recognition service
+under Apple's own privacy policy. Either way the recording is deleted afterwards and never reaches us.</p>
+<p>Two permissions cover this, and these are the exact sentences you will see on the prompts:</p>
+<ul>
+<li><strong>Microphone</strong> — &#x201C;Your voice intro is transcribed on this device during signup. The recording
+itself is deleted immediately afterward and is never uploaded.&#x201D;</li>
+<li><strong>Speech recognition</strong> — &#x201C;Speech recognition turns your recorded voice intro into text for
+your profile bio, entirely on this device.&#x201D;</li>
+</ul>
+<p>Both are optional. If you decline either one, you can type your bio instead.</p>
+
+<h2>Live matchmaking</h2>
+<p>Live matchmaking uses Game Center to pair you with another person who is online right now. When you connect,
+the app sends that one person your display name and bio so they know who they are talking to. The icebreaker
+messages you exchange travel over Game Center's own connection between the two devices and are held in memory
+only — they are not saved to your device's database, are not written to CloudKit, and are discarded when the
+session ends. If you both then agree to turn it into a real match, the invite to the shared conversation zone
+described above is sent over that same direct connection.</p>
+
+<h2>Photos</h2>
+<p>Attaching a photo to a chat uses Apple's system photo picker. The app receives only the single image you pick;
+it has no access to the rest of your photo library, which is why it never asks for photo library permission.</p>
+
+<h2>What the app does not use at all</h2>
+<p>No camera, no location, no contacts, no address book, no health data, no calendar, no background tracking. The
+app requests none of those permissions because nothing in it needs them.</p>
+
+<h2>Purchases</h2>
+<p>In-app purchases are processed entirely by Apple. We are told that a purchase succeeded so the app can unlock;
+we never see your payment details. Purchase state is managed with RevenueCat, a third-party purchase
+infrastructure SDK. It is set up without an account identifier, so it works from an anonymous id it generates
+itself — the app does not pass it your name, your bio, your email address, your Game Center identity or anything
+you write in the app.</p>
+
+<h2>What we never collect</h2>
+<p>No analytics, no advertising, no tracking, and no SDK that profiles you or builds an ad audience from you. We do
+not sell or share your data. This was verified against the source rather than assumed: the only third-party
+component in the app is the RevenueCat purchase SDK described above, and there is no analytics or advertising
+framework anywhere in it.</p>
+
+<h2>Children</h2>
+<p>This is a dating app intended for adults. It is not directed at children under 13, and we do not knowingly
+collect their personal information.</p>
+
+<h2>Deleting your data</h2>
+<p>Deleting the app removes your profile, your matches and your messages from that device. Content already synced
+into a shared conversation zone stays in the participants' iCloud accounts until it is removed there, and your
+community-vetting records live in the public CloudKit database described above. Email us and we will delete your
+applicant, approval, flag and invite-code records.</p>
+
+<h2>Changes</h2>
+<p>If this policy changes, the date at the top of this page changes with it.</p>
+
+<h2>Contact</h2>
+<p>Questions about privacy: <a href="mailto:info@nowstudioai.com">info@nowstudioai.com</a></p>
+<footer>Now Studio LLC · <a href="/support/campus-dating-connect/">Support</a> · <a href="/">nowstudioai.com</a></footer>
+</div></body></html>

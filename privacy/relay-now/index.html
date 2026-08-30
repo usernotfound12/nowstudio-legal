@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Privacy Policy · Relay Now</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>
+:root { color-scheme: light; --ink:#1A1614; --soft:#5B534E; --faint:#9A908A; --paper:#FBF7F2; --line:#E7DFD5; --accent:#6C4BF6; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); padding:48px 24px 80px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; line-height:1.6; }
+.wrap { max-width:720px; margin:0 auto; }
+.mark { width:56px; height:56px; border-radius:50%; margin-bottom:28px;
+  background:linear-gradient(160deg,#7C5CFF,#3A21A8); display:grid; place-items:center; }
+.bars { display:flex; gap:3px; align-items:center; }
+.bars i { display:block; width:3px; border-radius:2px; background:#fff; }
+h1 { font-family:ui-serif,Georgia,serif; font-size:34px; line-height:1.15; margin:0 0 6px; font-weight:600; }
+h2 { font-family:ui-serif,Georgia,serif; font-size:22px; margin:38px 0 10px; font-weight:600; }
+.updated { color:var(--faint); font-size:14px; margin:0 0 28px; }
+p, li { color:var(--soft); font-size:16px; }
+ul { padding-left:20px; }
+li { margin-bottom:8px; }
+strong { color:var(--ink); }
+a { color:var(--accent); }
+.callout { background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin:24px 0; }
+.callout p:last-child { margin-bottom:0; }
+footer { margin-top:56px; padding-top:24px; border-top:1px solid var(--line); color:var(--faint); font-size:14px; }
+</style></head>
+<body><div class="wrap">
+<h1>Relay Now Privacy Policy</h1>
+<p class="updated">Last updated 29 August 2026 · Now Studio LLC</p>
+<div class="callout"><p><strong>The short version.</strong> Relay Now handles the links you open, which is exactly the kind of thing you would not want leaving your Mac. It does not. The app makes no network requests of its own, has no account and no telemetry, and every link it remembers stays on this Mac.</p></div>
+<h2>What we collect</h2>
+<p>Nothing. Relay Now has no account, no sign-in, no server and no analytics, so there is nothing for
+us to collect. We never see a link you open, and we could not: the app never sends one anywhere.</p>
+<h2>The links you open</h2>
+<p>When you hand Relay Now a link, it strips known tracking parameters from it — utm_*,
+gclid, fbclid and the like — and asks macOS to open the cleaned link in the
+browser you picked. The stripping is plain text processing done entirely on your Mac against a
+fixed list built into the app. No lookup service is consulted and no copy of the link is sent for
+&ldquo;cleaning&rdquo; or any other purpose.</p>
+<h2>Where history is stored</h2>
+<ul><li><strong>On this Mac only.</strong> Relay Now keeps the last 50 links it opened — the link as you gave it, the cleaned version, which browser it went to and when — in its own sandboxed preferences on this Mac. That data is never uploaded, synced or shared, and no other device or person can see it.</li></ul>
+<p>You can remove any single entry from the list, or use <strong>Clear</strong> to erase the whole history
+at once. Deleting the app removes it too.</p>
+<h2>The clipboard</h2>
+<p>Relay Now reads your clipboard only at the moment you press its paste button, and only to fill in
+the link field. It does not watch or poll the clipboard in the background.</p>
+<h2>Which browsers you have</h2>
+<p>To fill the browser list, Relay Now asks macOS which of a fixed set of well-known browser bundle
+identifiers are installed. That question is answered locally by Launch Services; the answer is used
+to draw the buttons and is not stored or transmitted.</p>
+<h2>Becoming your default browser</h2>
+<p>Relay Now can offer to register itself as the handler for web links, so links from other apps land
+in its picker instead of opening straight away. macOS itself shows the confirmation dialog before
+anything changes, and the app works perfectly well without ever being made the default.</p>
+<h2>What we never collect</h2>
+<p>No analytics, no advertising, no tracking, and no third-party SDKs that profile you. We do not
+collect device identifiers, browsing history or usage data, and we never sell or share data. This
+is verifiable rather than a promise: the app contains no analytics or advertising frameworks, and
+no networking code at all. It runs inside the macOS App Sandbox without permission to make outgoing
+network connections.</p>
+<h2>Children</h2>
+<p>The app is not directed at children under 13, and we do not knowingly collect their personal
+information.</p>
+<h2>Changes</h2>
+<p>If this policy changes, the date at the top of this page changes with it.</p>
+<h2>Contact</h2>
+<p>Questions about privacy: <a href="mailto:info@nowstudioai.com">info@nowstudioai.com</a></p>
+<footer>Now Studio LLC · <a href="/support/relay-now/">Support</a> · <a href="/">nowstudioai.com</a></footer>
+</div></body></html>

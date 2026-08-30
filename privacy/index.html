@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Privacy Policy · DialNow</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>
+:root { color-scheme: light; --ink:#1A1614; --soft:#5B534E; --faint:#9A908A; --paper:#FBF7F2; --line:#E7DFD5; --accent:#6C4BF6; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); padding:48px 24px 80px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; line-height:1.6; }
+.wrap { max-width:720px; margin:0 auto; }
+.mark { width:56px; height:56px; border-radius:50%; margin-bottom:28px;
+  background:linear-gradient(160deg,#7C5CFF,#3A21A8); display:grid; place-items:center; }
+.bars { display:flex; gap:3px; align-items:center; }
+.bars i { display:block; width:3px; border-radius:2px; background:#fff; }
+h1 { font-family:ui-serif,Georgia,serif; font-size:34px; line-height:1.15; margin:0 0 6px; font-weight:600; }
+h2 { font-family:ui-serif,Georgia,serif; font-size:22px; margin:38px 0 10px; font-weight:600; }
+.updated { color:var(--faint); font-size:14px; margin:0 0 28px; }
+p, li { color:var(--soft); font-size:16px; }
+ul { padding-left:20px; }
+li { margin-bottom:8px; }
+strong { color:var(--ink); }
+a { color:var(--accent); }
+.callout { background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin:24px 0; }
+.callout p:last-child { margin-bottom:0; }
+footer { margin-top:56px; padding-top:24px; border-top:1px solid var(--line); color:var(--faint); font-size:14px; }
+</style></head>
+<body><div class="wrap">
+<div class="mark"><div class="bars"><i style="height:9px"></i><i style="height:17px"></i><i style="height:24px"></i><i style="height:15px"></i><i style="height:8px"></i></div></div>
+<h1>DialNow Privacy Policy</h1>
+<p class="updated">Last updated 29 August 2026 · Now Studio LLC</p>
+
+<p>DialNow is an audio guestbook. A host creates an event; guests scan a code and leave a
+voice message. This policy explains exactly where those recordings go.</p>
+
+<div class="callout">
+<p><strong>The short version.</strong> Voice messages are stored in the <strong>host's own
+iCloud account</strong>, not on our servers. Every recording is encrypted on the guest's phone
+before it is sent, using a key only the host holds. <strong>Now Studio cannot listen to any
+message</strong> — not as a policy, but because we do not have the key.</p>
+</div>
+
+<h2>What we collect</h2>
+<ul>
+<li><strong>Voice recordings</strong> made by guests, and any name or note a guest chooses to add.</li>
+<li><strong>Event details</strong> a host enters: event title, host name, date, prompt, and an optional cover photo.</li>
+</ul>
+<p>That is the complete list. DialNow contains no analytics, no advertising, no tracking, and
+no third-party SDKs. We do not collect device identifiers, location, contacts, or usage data.</p>
+
+<h2>Where it is stored</h2>
+<ul>
+<li><strong>Messages and events</strong> live in the host's private iCloud database, inside
+their personal Apple Account. Now Studio has no access to it.</li>
+<li><strong>Event invite details</strong> (title, host name, prompt, cover photo) are stored in
+a public Apple CloudKit database so a guest's phone can display the invite before they record.
+They are readable only by someone who has the event's invite code.</li>
+<li><strong>A message in transit</strong> passes briefly through a relay we operate at
+nowstudioai.com. Apple does not permit anonymous writes to CloudKit, so this relay performs the
+write on the guest's behalf. It receives the recording <strong>already encrypted</strong>,
+forwards it, and retains nothing.</li>
+</ul>
+
+<h2>Encryption</h2>
+<p>Each event has its own key pair. The public half travels with the invite; the private half
+never leaves the host's iCloud database. A guest's recording and name are sealed on their phone
+with AES-GCM under a key derived from that pair (X25519 key agreement, HKDF-SHA256). Only the
+host's device can open them.</p>
+
+<h2>Guests</h2>
+<p>Guests need no account, no app install, and no sign-in. Providing a name is optional — a
+guest may stay anonymous. Nothing about a guest is collected beyond the recording and whatever
+they chose to type.</p>
+
+<h2>Sharing and deletion</h2>
+<ul>
+<li>A host may invite co-hosts, who can see and manage the same messages.</li>
+<li>A host may delete any message, or the whole guestbook, at any time. Deleting a guestbook
+removes it for co-hosts too.</li>
+<li>Because data lives in the host's iCloud account, deleting the app does not delete the data;
+deleting the guestbook inside the app does.</li>
+<li>We cannot delete a host's data on request, because we cannot reach it. Apple's iCloud
+privacy terms govern that storage.</li>
+</ul>
+
+<h2>Children</h2>
+<p>DialNow is rated 4+ and is not directed at children. It collects no personal information
+beyond what is described above.</p>
+
+<h2>Changes</h2>
+<p>If this policy changes materially we will update the date above.</p>
+
+<h2>Contact</h2>
+<p>Questions about privacy: <a href="mailto:info@nowstudioai.com">info@nowstudioai.com</a></p>
+
+<footer>Now Studio LLC · <a href="/support/">Support</a> · <a href="/">nowstudioai.com</a></footer>
+</div></body></html>
