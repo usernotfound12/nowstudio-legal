@@ -23,80 +23,166 @@ footer { margin-top:56px; padding-top:24px; border-top:1px solid var(--line); co
 </style></head>
 <body><div class="wrap">
 <h1>Pivot Business Tracker Privacy Policy</h1>
-<p class="updated">Last updated 29 August 2026 · Now Studio LLC</p>
-<div class="callout"><p><strong>The short version.</strong> Pivot has no account, no server and no cloud storage.
-Everything you type stays in the app on your device. The one time anything leaves your phone is when you switch on
-Nearby discovery, and then it goes directly to another phone in the room over the local network — never through
-us.</p></div>
+<p class="updated">Last updated 30 August 2026 · Now Studio LLC</p>
+<div class="callout"><p><strong>The short version.</strong> Pivot has no account and no server of its own. What you
+write is saved as ordinary files inside the app on your device, and it is not uploaded to us, not synced and not
+readable by us. Two things do reach outside your phone, and both are set out in full below: Nearby discovery,
+which sends your profile straight to one other phone after you and the person holding it have each said yes, and
+RevenueCat, which keeps track of whether you bought the unlock.</p></div>
 
 <h2>There is no account and no backend</h2>
 <p>Pivot does not ask you to sign up, sign in, or give an email address. It has no server of its own, and it does
 not use iCloud or CloudKit. Nothing you write in the app is transmitted to Now Studio, because there is nowhere
-for it to be transmitted to.</p>
+for it to be transmitted to. There are exactly two pieces of networking in the whole app: the direct
+device-to-device link Nearby uses, and the purchase SDK described near the bottom of this page.</p>
 
 <h2>Where your entries are stored</h2>
-<p>In the app's own memory while it is running. Pivot writes nothing to a database, nothing to iCloud and nothing
-to a file of its own. Anything you add during a session — a verification application, a problem you post, feedback
-you file, a response you write, the points you earn — exists for that session and is gone once the app is closed
-and relaunched. That is a real limitation to know about as much as it is a privacy property, so please do not
-treat Pivot as a place to keep something you need to keep.</p>
+<p><strong>On disk, on your device.</strong> An earlier version of this page said Pivot kept nothing between
+launches. That is no longer true, so here is exactly what it keeps. Pivot writes plain JSON files into a
+<em>PivotData</em> folder in its own Application Support directory, inside the app's sandboxed container:</p>
+<ul>
+<li><strong>Your profile</strong> — name, title, company, tag line, tags, your headline numbers, every slide of
+your pitch deck and your avatar colour.</li>
+<li><strong>Your feed activity</strong> — posts you wrote, posts you liked, posts you hid, and comments you
+wrote.</li>
+<li><strong>Your Problems tab state</strong> — any owner application you filed, whether you hold access, the
+problems and feedback you posted, responses you wrote, and your points.</li>
+<li><strong>Your VibeCheck card</strong> — name, title, company, social mode, your &#x201C;ask me about&#x201D;
+line and your interests.</li>
+<li><strong>Preferences</strong> — small switches, such as auto-beam on connect.</li>
+<li><strong>Nearby safety state</strong> — the per-install ID, your block list and your report log. Described
+under Nearby below.</li>
+</ul>
+<p>Those files stay in the app's container. Pivot adds no encryption of its own on top of the protection iOS
+gives every app's container. Because they live in Application Support and the app does not exclude them, they are
+included in an iPhone backup the way most app data is — that backup is between you and Apple, and we have no
+access to it. Sample content is not stored as though it were yours: the example founders, the example feed posts
+and the example nearby entries are re-seeded from inside the app each launch and stay labelled as samples.</p>
 
-<h2>The pitch decks and founder profiles are sample content</h2>
-<p>The founder profile, pitch carousel, metrics and VibeCheck card the app shows as yours are built-in
-demonstration content that ships inside the app. They are not assembled from anything you entered and not drawn
-from your device. The same is true of the other founders you browse, the nearby founders shown on the radar, and
-the sample applications sitting in the review queue.</p>
+<h2>Your profile starts empty</h2>
+<p>A new install of Pivot has no name, no company, no tag line, no headline numbers and no pitch slides. The
+profile screen is blank and says so. Nothing on it is pre-filled with invented material that would quietly become
+&#x201C;yours&#x201D; the moment you typed your own name next to it.</p>
+<p>The finished-looking pitch deck you can browse — an invented founder at an invented company — is separate
+example content that ships inside the app. It is labelled as an example everywhere it appears and no part of the
+app copies it into your profile. The same goes for the other founders in the feed, the sample founders on the
+Nearby radar and the sample VibeCheck cards: each carries a sample badge, and the sample nearby founders appear
+only after you deliberately tap <em>Preview with sample founders</em>.</p>
 
-<h2>Verified business owner applications</h2>
-<p>Applying for verified-business-owner status asks you for a business name, your role, a contact detail and a
-short note. Here is what actually happens to that, stated precisely, because it is easy to assume otherwise: the
-application is added to the queue held inside the app on your device, and <strong>it is not sent anywhere</strong>.
-No other person receives it. The peer review that follows — the approvals that arrive a few seconds later and flip
-you to verified — is produced by the app itself on your device to demonstrate the flow. There is no network call
-and no other real reviewer involved.</p>
-<p>The corollary is worth saying too. When you review applications as a verified member, the applications you are
-approving or rejecting are the sample entries that shipped with the app, not submissions from real people.</p>
+<h2>Verified business owner status</h2>
+<p>Pivot's verified-owner gate is peer review: an application needs two approvals from other verified owners
+signed in on the same device. Because there is no server, applications never travel between phones, and one
+person per install means the number of people who could actually vote is zero. So the app does not show you an
+application form. It says owner verification is not running, explains why, and offers the one route that works.</p>
+<p>That route is <strong>Explore with Sample Access</strong> — an explicit tap that opens the Problems tab in a
+clearly-marked demo mode. Anyone who takes it is badged &#x201C;Sample Access&#x201D;, never &#x201C;Verified
+Business Owner&#x201D;, everywhere the badge appears, and it can be switched off again at any time. Nothing about
+it is sent anywhere.</p>
+<p>Two things this page used to get wrong, corrected: <strong>nothing approves itself.</strong> There is no timer,
+no background review and no fabricated approvals arriving a few seconds later. And the example founders that ship
+with the app are fiction — they can never cast a vote and are not counted as reviewers. If enough real reviewers
+ever did exist on one device and the form appeared, the application you typed would be saved to the file on that
+device and voted on there. It would still not be sent anywhere.</p>
 
 <h2>The Problems feed</h2>
-<p>Problems, feedback, responses and the points leaderboard all work the same way: they live in the app on your
-device for as long as it is running. Posting to the feed does not publish anything to anyone.</p>
+<p>Problems, feedback, responses and the points leaderboard are stored in the file on your device described
+above. Posting to the feed saves it locally; it does not publish anything to anyone, and no post from anyone else
+can arrive, because there is no server for it to arrive from.</p>
 
-<h2>Nearby discovery and beaming a pitch</h2>
-<p>This is the only feature that sends anything off your device, and only while you have deliberately turned
-discovery on. It uses Apple's peer-to-peer networking over the local network, directly between phones, with no
-server in the middle. The permission prompt you will see says, in the app's own words:</p>
+<h2>Nearby discovery: what is broadcast, and when</h2>
+<p>This is the only feature that sends your own material off your device, and only while you have deliberately
+turned discovery on. It uses Apple's peer-to-peer networking directly between phones over Wi-Fi and Bluetooth,
+under the Bonjour service name <em>_pivot-pitch</em>, with no server in the middle. The permission prompt you will
+see says, in the app's own words:</p>
 <ul>
-<li><strong>Local network</strong> — &#x201C;PIVOT uses your local network to discover nearby founders, beam pitch
-carousels, and surface VibeCheck social cards at events — no Wi-Fi required.&#x201D;</li>
+<li><strong>Local network</strong> — &#x201C;PIVOT finds other people running PIVOT on the same local network or
+nearby over Bluetooth, so you can see each other's pitch decks without an account or an internet
+connection.&#x201D;</li>
 </ul>
-<p>While discovery is on, the app broadcasts your founder name, company and card colour so other nearby devices
-running Pivot can list you. If you then beam your pitch to someone, your founder profile and its pitch slides are
-sent straight to that one device. The connection between the two devices requires encryption. Nothing that passes
-over it is stored by us or routed through us, and turning discovery off stops the broadcast and clears the list.</p>
+
+<p><strong>Before anyone consents to anything</strong>, while discovery is on, the app advertises a short record
+to every device in range that is running Pivot. It contains four things and nothing else:</p>
+<ul>
+<li>Your <strong>name</strong> as you typed it into your profile.</li>
+<li>Your <strong>company</strong>, if you have filled one in.</li>
+<li>Your <strong>avatar colour</strong>, as a number.</li>
+<li>A <strong>per-install identifier</strong> (<em>pid</em>) — a random UUID generated once when Pivot first
+runs and kept in the file on your device. It is broadcast so that a block someone places on you survives you
+renaming yourself. It is not tied to your Apple Account, your device or you; a fresh install generates a new
+one.</li>
+</ul>
+<p>Your pitch deck, your headline numbers and your tag line are <strong>not</strong> in that broadcast. Your name
+also appears as the peer name of the device on the local network, because that is how the connection identifies
+you.</p>
+
+<p><strong>Connecting takes two explicit yeses.</strong> Nothing connects on its own. Seeing someone on the radar
+does not connect you to them. You tap Connect on one specific person, which sends them a request carrying the
+same name, company and install ID; on their phone that request is shown to them and they answer it themselves.
+The app never auto-accepts. If nobody answers, the request is declined for them after about twenty-five seconds,
+and declining can be combined with blocking in one action.</p>
+
+<p><strong>After both sides have agreed</strong>, your full profile is sent to that one device: your name, title,
+company, tag line, tags, headline metrics and every slide of your deck. That handshake happens automatically once
+the connection is established, so agreeing to connect is agreeing to show your deck. Beaming a pitch — the paid
+feature — sends the same profile again and raises a full-screen card on their phone. The link between the two
+devices requires encryption. Nothing that crosses it is stored by us or routed through us, and turning discovery
+off stops the broadcast, ends the session and clears the list.</p>
+
+<p><strong>Blocking</strong> is real and it is kept. A blocked person is filtered out of the radar before they are
+drawn, and their connection requests are refused without ever reaching you. The block list is saved on your
+device. Being honest about its limits: peer-to-peer networking gives an app no hardware identifier and no
+account, so a block is keyed on the install ID the other device chose to send, falling back to the name they
+typed. A reinstall, a data wipe or a modified build mints a new one and walks past the block. It is reliable for
+the ordinary case it exists for — the same person, same install, whom you do not want to see again — and it is
+not a defence against someone determined to get back on your radar. That is why blocking is never the only
+protection: even an evaded block cannot transfer anything without a second, explicit yes from you.</p>
+
+<p><strong>Reporting is a local record, not a submission.</strong> Filing a report writes a dated entry on your
+device holding the reason you chose, the note you wrote, the name and company they were claiming, the device name
+they were advertising, their install ID and a trimmed excerpt of what they actually sent you. <strong>It is not
+sent to us or to anyone else</strong>, because there is no server to send it to, and the app says so on the
+reporting screen rather than implying otherwise. You can read it, share it yourself or delete it from Nearby
+&#x203A; Safety. If you want someone to stop reaching you, blocking is the control that does that.</p>
+
+<p><strong>Anything a stranger's device sends is treated as hostile.</strong> Every string that arrives is
+cleaned before it is stored or drawn: invisible control and formatting characters and right-to-left overrides are
+stripped, stacked combining marks are flattened, whitespace is collapsed, every field is length-capped, lists are
+capped and de-duplicated, and identifiers are regenerated rather than trusted. Oversized payloads are discarded
+before they are decoded, and one device cannot raise the full-screen pitch card more than once every few
+seconds.</p>
 
 <h2>What the app does not use at all</h2>
 <p>No camera, no microphone, no location, no contacts, no photo library, no health or calendar data, no
-notifications. The app requests none of those permissions because nothing in it needs them. It uses haptics, which
-needs no permission.</p>
+notifications, no advertising identifier. The app requests none of those permissions because nothing in it needs
+them. Local network is the only permission it asks for. It also uses haptics, which needs no permission.</p>
 
 <h2>Purchases</h2>
 <p>In-app purchases are processed entirely by Apple. We are told that a purchase succeeded so the app can unlock;
 we never see your payment details. Purchase state is managed with RevenueCat, a third-party purchase
-infrastructure SDK. It is set up without an account identifier, so it works from an anonymous id it generates
-itself — the app does not pass it your name, your business details or anything you write in the app.</p>
+infrastructure SDK, which starts when the app launches and contacts RevenueCat's servers. It is configured
+without an account identifier, so it works from an anonymous id it generates itself, and it sends that id, your
+purchase status and basic device information. The app does not pass it your name, your business details or
+anything you write in Pivot.</p>
 
 <h2>What we never collect</h2>
-<p>No analytics, no advertising, no tracking, and no SDK that profiles you or builds an ad audience from you. We do
-not collect device identifiers, browsing history or usage data, and we never sell or share data. This was verified
-against the source rather than assumed: the only third-party component in the app is the RevenueCat purchase SDK
-described above, and there is no analytics or advertising framework anywhere in it.</p>
+<p>No analytics, no advertising, no tracking, and no SDK that profiles you or builds an ad audience from you. We
+do not collect device identifiers, browsing history or usage data, and we never sell or share data. This was
+verified against the source rather than assumed: the only third-party component in the app is the RevenueCat
+purchase SDK described above, and there is no analytics or advertising framework anywhere in it.</p>
 
 <h2>Children</h2>
 <p>The app is not directed at children under 13, and we do not knowingly collect their personal information.</p>
 
 <h2>Deleting your data</h2>
-<p>Closing the app clears what you entered during that session. Deleting the app removes everything it stored on
-your device. There is nothing held on our side to delete.</p>
+<p>Settings &#x203A; <em>Reset my data</em> erases the files holding your profile, your deck, your posts, your
+comments and your Problems activity, and returns the app to its first-launch state. Your purchase is not
+affected.</p>
+<p>That reset deliberately leaves your block list and your report log alone — silently unblocking everyone you
+have ever blocked would be a safety regression, not a reset. Both are managed directly in Nearby &#x203A; Safety,
+where every blocked person has an Unblock button and the reports can be deleted one at a time or cleared
+together.</p>
+<p>Deleting the app removes everything it stored on your device, including those. There is nothing held on our
+side to delete.</p>
 
 <h2>Changes</h2>
 <p>If this policy changes, the date at the top of this page changes with it.</p>
